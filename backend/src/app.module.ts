@@ -5,6 +5,15 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
+import { Aluno } from './aluno/models/aluno.model';
+import { Curso } from './curso/models/curso.model'; 
+import { AlunoCurso } from './aluno-curso/models/aluno-curso.model'; 
+
+
+import { AlunosModule } from './alunos/alunos.module';
+import { CursosModule } from './cursos/cursos.module';
+import { AlunoCursosModule } from './aluno-cursos/aluno-cursos.module';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -22,9 +31,14 @@ import { AppService } from './app.service';
         password: configService.get<string>('DB_PASSWORD'),
         database: configService.get<string>('DB_DATABASE'),
         autoLoadModels: true,
-        synchronize: false,
+        models: [AlunoCurso, Aluno, Curso],
+        synchronize: true,
+        alter: true,
       }),
     }),
+    AlunosModule,
+    CursosModule,
+    AlunoCursosModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,5 +1,6 @@
-import { Column, Model, Table, PrimaryKey, AutoIncrement, DataType, HasMany } from 'sequelize-typescript';
-import { AlunoCurso } from '../../aluno-curso/models/aluno-curso.model';
+import { Column, Model, Table, PrimaryKey, AutoIncrement, DataType, BelongsToMany } from 'sequelize-typescript';
+import { Curso } from '../../curso/models/curso.model';
+import { AlunoCurso } from '../../aluno-curso/models/aluno-curso.model'; 
 
 @Table({
   tableName: 'alunos',
@@ -97,6 +98,6 @@ export class Aluno extends Model<Aluno> {
   })
   estado: string;
 
-  @HasMany(() => AlunoCurso)
-  alunoCursos: AlunoCurso[];
+  @BelongsToMany(() => Curso, () => AlunoCurso)
+  cursos: Curso[];
 }
