@@ -1,4 +1,5 @@
-import { Column, Model, Table, PrimaryKey, AutoIncrement, DataType, HasMany } from 'sequelize-typescript';
+import { Column, Model, Table, PrimaryKey, AutoIncrement, DataType, BelongsToMany } from 'sequelize-typescript';
+import { Aluno } from '../../aluno/models/aluno.model';
 import { AlunoCurso } from '../../aluno-curso/models/aluno-curso.model';
 
 @Table({
@@ -11,13 +12,15 @@ export class Curso extends Model<Curso> {
   @Column(DataType.INTEGER)
   declare id: number;
 
-  @Column({
-    type: DataType.STRING(255),
-    allowNull: false,
-    unique: true,
-  })
+  @Column({ type: DataType.STRING(255), allowNull: false, unique: true })
   nome: string;
 
-  @HasMany(() => AlunoCurso)
-  alunoCursos: AlunoCurso[];
+  @Column({ type: DataType.TEXT, allowNull: true })
+  descricao: string;
+
+  @Column({ type: DataType.INTEGER, allowNull: true })
+  cargaHoraria: number;
+
+  @BelongsToMany(() => Aluno, () => AlunoCurso)
+  alunos: Aluno[];
 }
