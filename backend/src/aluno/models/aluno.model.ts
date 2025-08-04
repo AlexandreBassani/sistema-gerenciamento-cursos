@@ -16,13 +16,13 @@ export class Aluno extends Model<Aluno> {
     type: DataType.STRING(255),
     allowNull: false,
   })
-  nome: string;
+  declare nome: string;
 
   @Column({
     type: DataType.STRING(255),
     allowNull: false,
   })
-  sobrenome: string;
+  declare sobrenome: string;
 
   @Column({
     type: DataType.DATEONLY,
