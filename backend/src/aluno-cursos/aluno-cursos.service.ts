@@ -7,6 +7,8 @@ import { CreateAlunoCursoDto } from './dto/create-aluno-curso.dto';
 import { UpdateAlunoCursoDto } from './dto/update-aluno-curso.dto';
 
 
+
+
 @Injectable()
 export class AlunoCursosService {
   constructor(
@@ -19,7 +21,7 @@ export class AlunoCursosService {
   ) {}
 
   async create(createAlunoCursoDto: CreateAlunoCursoDto): Promise<AlunoCurso> {
-    const { alunoId, cursoId, dataConclusao, concluido } = createAlunoCursoDto;
+    const { alunoId, cursoId, dataConclusao, concluido } = createAlunoCursoDto; 
 
     const aluno = await this.alunoModel.findByPk(alunoId);
     if (!aluno) {
@@ -39,11 +41,11 @@ export class AlunoCursosService {
     const dataToCreate = {
     alunoId: alunoId,
     cursoId: cursoId,
-    dataConclusao: dataConclusao instanceof Date ? dataConclusao : (dataConclusao ? new Date(dataConclusao) : null),
+    dataConclusao: dataConclusao, 
     concluido: concluido || false
   };
 
-    return this.alunoCursoModel.create(dataToCreate as any);
+   return this.alunoCursoModel.create(dataToCreate as any);
   }
   
   async findAll(): Promise<AlunoCurso[]> {

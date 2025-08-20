@@ -13,14 +13,14 @@ export class AlunoCurso extends Model<AlunoCurso> {
     type: DataType.INTEGER,
     allowNull: false,
   })
-  declare id: number; // Certifique-se de que está 'declare id: number;'
+  declare id: number;
 
   @ForeignKey(() => Aluno)
   @Column({
     type: DataType.INTEGER,
-    allowNull: false, // ESTE É O PONTO CHAVE: alunoId NÃO PODE SER NULL
+    allowNull: false, 
   })
-  alunoId: number; // E aqui deve ser 'number', não 'number | undefined'
+  alunoId: number; 
 
   @BelongsTo(() => Aluno)
   aluno: Aluno;
@@ -28,9 +28,9 @@ export class AlunoCurso extends Model<AlunoCurso> {
   @ForeignKey(() => Curso)
   @Column({
     type: DataType.INTEGER,
-    allowNull: false, // ESTE É O PONTO CHAVE: cursoId NÃO PODE SER NULL
+    allowNull: false, 
   })
-  cursoId: number; // E aqui deve ser 'number', não 'number | undefined'
+  cursoId: number;
 
   @BelongsTo(() => Curso)
   curso: Curso;
