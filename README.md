@@ -105,10 +105,9 @@ frontend
 - Node.js **22.16.0+**
 - PostgreSQL **13+**
 
-## 2) Backend
-Crie `backend/.env`:
-
-```plaintext
+### Variáveis de Ambiente
+**Backend** (`backend/.env`)
+```dotenv
 DB_HOST=localhost
 DB_PORT=5432
 DB_USERNAME=postgres
@@ -143,10 +142,8 @@ App: http://localhost:3000
 As APIs do sistema são divididas em três principais categorias: Alunos, Cursos e Aluno-Cursos. Cada uma delas possui métodos específicos para realizar operações CRUD (Criar, Ler, Atualizar e Deletar).
 
 
-
 ### Alunos
 A API de Alunos permite criar novos alunos, listar alunos com suporte a paginação e filtros, buscar um aluno específico por ID, atualizar informações de um aluno e remover um aluno. Os parâmetros de consulta para a listagem incluem opções como paginação, busca por nome, sobrenome, e-mail ou CPF, além de filtros por estado e ordenação.
-
 
 ### Cursos
 A API de Cursos oferece funcionalidades semelhantes, permitindo a criação de novos cursos, listagem de cursos, busca por ID, atualização e remoção de cursos. 
